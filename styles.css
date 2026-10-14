@@ -1,0 +1,103 @@
+:root {
+  --bg: #f4f9ff;
+  --surface: #ffffff;
+  --ink: #14213d;
+  --muted: #5a6b85;
+  --brand: #1f5d3a;
+  --brand-ink: #ffffff;
+  --accent: #f2a93b;
+  --sky: #cfe6fb;
+  --line: #dbe7f3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1a2b;
+    --surface: #15263d;
+    --ink: #eaf2fb;
+    --muted: #9fb3cc;
+    --brand: #6fcf97;
+    --brand-ink: #0e1a2b;
+    --sky: #1b3553;
+    --line: #25405f;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--brand); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+header.top {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--ink); text-decoration: none; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+nav a { margin-left: 18px; color: var(--muted); text-decoration: none; font-size: 15px; }
+nav a:hover { color: var(--ink); }
+
+.hero {
+  background: linear-gradient(180deg, var(--sky), var(--bg));
+  padding: 56px 0 24px;
+}
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center; }
+.hero h1 { font-size: clamp(32px, 5.5vw, 52px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -0.02em; }
+.hero p.lead { font-size: 19px; color: var(--muted); margin: 0 0 24px; max-width: 34em; }
+.btn {
+  display: inline-block; padding: 13px 22px; border-radius: 999px;
+  background: var(--brand); color: var(--brand-ink); font-weight: 700; text-decoration: none;
+}
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); margin-left: 8px; }
+.badge-soon { display: inline-block; margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+.phones { display: flex; justify-content: center; gap: 18px; align-items: flex-end; }
+.phone {
+  width: 100%; max-width: 230px; border-radius: 30px; padding: 8px;
+  background: #101820; box-shadow: 0 24px 50px -18px rgba(20, 33, 61, .45);
+}
+.phone img { display: block; width: 100%; border-radius: 23px; }
+.phone.lift { transform: translateY(-26px); }
+
+section.block { padding: 56px 0; }
+section.block h2 { font-size: clamp(26px, 4vw, 36px); margin: 0 0 8px; letter-spacing: -0.01em; }
+section.block p.sub { color: var(--muted); margin: 0 0 30px; max-width: 40em; }
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+.card h3 { margin: 0 0 6px; font-size: 18px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.ico { font-size: 26px; margin-bottom: 8px; }
+
+.shots { display: flex; gap: 20px; overflow-x: auto; padding: 6px 4px 24px; scroll-snap-type: x mandatory; }
+.shots figure { margin: 0; flex: 0 0 auto; width: 230px; scroll-snap-align: center; text-align: center; }
+.shots figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+.note { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 12px; padding: 16px 18px; color: var(--muted); font-size: 15px; }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+footer a { color: var(--muted); margin-right: 16px; }
+
+/* halaman dokumen (privacy, hapus akun) */
+.doc { padding: 40px 0 56px; max-width: 760px; }
+.doc h1 { font-size: clamp(28px, 4.5vw, 40px); margin: 0 0 6px; }
+.doc h2 { margin-top: 36px; font-size: 24px; }
+.doc p, .doc li { color: var(--ink); }
+.doc .meta { color: var(--muted); font-size: 14px; }
+.doc ol li { margin-bottom: 8px; }
+
+@media (max-width: 800px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+  .phone.lift { transform: none; }
+  nav a:not(.keep) { display: none; }
+}
